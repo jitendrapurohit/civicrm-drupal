@@ -629,6 +629,11 @@ function civicrm_views_get_filter($data_type, $html_type = NULL, $option_group_i
         'allow empty' => TRUE,
       );
 
+    case "ContactReference":
+      return array(
+        'handler' => 'civicrm_handler_filter_contact_ref',
+      );
+
     default:
       return array(
         'handler' => 'views_handler_filter_string',
@@ -774,7 +779,7 @@ function civicrm_views_plugins() {
     $civicrm_module_path = drupal_get_path('module', 'civicrm');
     $data['row'] = array(
       'civicrm_event_calendar' => array(
-      	'title' => t('Calendar Items'),
+        'title' => t('Calendar Items'),
         'help' => t('Displays each selected event as a Calendar item.'),
         'handler' => 'calendar_plugin_row_civicrm',
         'path' => "$civicrm_module_path/modules/views/plugins",
@@ -797,7 +802,7 @@ function civicrm_views_plugins() {
         'dao class' => 'CRM_Activity_DAO_Activity',
         'title field' => 'subject',
       ),
-			'civicrm_case_calendar' => array(
+      'civicrm_case_calendar' => array(
         'title' => t('Case Items'),
         'help' => t('Displays each selected case as a Calendar item.'),
         'handler' => 'calendar_plugin_row_civicrm',
